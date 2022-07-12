@@ -8,7 +8,7 @@ This application blocks the main thread with a computation heavy opperation, the
 
 This "unresponsive" state is easy to detect when running/testing the application with a human in the loop. However, when using the provided programatic testing toolchain this "unresponsive" state does not trigger any issues on performance tests using the `traceAction`,`tracePerformance` or any `TimelineSummary` based diagnostics.
 
-## Steps to reproduce
+## Steps to reproduce manually
 
 1. `cd flutter_blocked_main_thread`
 2. `flutter run -d macos --profile`
@@ -19,3 +19,11 @@ This "unresponsive" state is easy to detect when running/testing the application
    1. The main thread gets blocked and UI is "unresponsive"
    2. During this unresponsive time, you can attempt to click the second button N times, but there is no console messages confirming our "unresponsive" state.
    3. Once we see the thread is no longer blocked we see all N messages from our clicking show up.
+
+
+## Now lets reproduce using flutter tooling...
+The test is currently only looking at rendering performance via the `watchPerformance` 
+
+1. `flutter drive --profile --driver=test_driver/block_driver.dart --target=performance_test/block_perf.dart  -d macos`
+2. This will dump a performance report to `build/integration_response_data.json`
+3. Looking at the render stats you will see the render frame times are within spec. Note: time is reported in milliseconds where noted and micro seconds in the arrays
