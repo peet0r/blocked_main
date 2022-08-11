@@ -27,3 +27,6 @@ The test is currently only looking at rendering performance via the `watchPerfor
 1. `flutter drive --profile --driver=test_driver/block_driver.dart --target=performance_test/block_perf.dart  -d macos`
 2. This will dump a performance report to `build/integration_response_data.json`
 3. Looking at the render stats you will see the render frame times are within spec. Note: time is reported in milliseconds where noted and micro seconds in the arrays
+
+# Proposed Workaround: Watchdog
+Create a `Timer` in a separate dart isolate that 'barks' if the main isolate does not 'pet' it. This solution can detect blocking main threads and kill a "deadlocked" process.
