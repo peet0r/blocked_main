@@ -4,9 +4,9 @@ A self contained app that displays a difficult to test for main thread block.
 
 ## Problem
 
-This application blocks the main thread with a computation heavy opperation, the user has a fully frozen screen. When the computation is completed and the maint thread is unblocked and the app returns to the normal responsive state (nothing shocking here).
+This application blocks the main thread with a computation heavy operation, the user has a fully frozen screen. When the computation is completed and the main thread is unblocked and the app returns to the normal responsive state (nothing shocking here).
 
-This "unresponsive" state is easy to detect when running/testing the application with a human in the loop. However, when using the provided programatic testing toolchain this "unresponsive" state does not trigger any issues on performance tests using the `traceAction`,`tracePerformance` or any `TimelineSummary` based diagnostics.
+This "unresponsive" state is easy to detect when running/testing the application with a human in the loop. However, when using the provided programmatic testing toolchain this "unresponsive" state does not trigger any issues on performance tests using the `traceAction`,`tracePerformance` or any `TimelineSummary` based diagnostics.
 
 ## Steps to reproduce manually
 
