@@ -19,6 +19,7 @@ This "unresponsive" state is easy to detect when running/testing the application
    1. The main thread gets blocked and UI is "unresponsive"
    2. During this unresponsive time, you can attempt to click the second button N times, but there is no console messages confirming our "unresponsive" state.
    3. Once we see the thread is no longer blocked we see all N messages from our clicking show up.
+   4. The performance overlay and performance tab will not report any issues even though the app was frozen for a significant time. The actual time spent rendering the frame that immediately follows the blocking function is within spec so the performance tooling says app is operating within spec.
 
 
 ## Now lets reproduce using flutter tooling...
